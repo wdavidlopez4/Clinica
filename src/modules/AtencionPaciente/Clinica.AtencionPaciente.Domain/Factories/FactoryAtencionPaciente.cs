@@ -24,5 +24,11 @@ namespace Clinica.AtencionPaciente.Domain.Factories
         {
             return new Joven(esFumador, nombre, edad, numeroHistoriasClinico, hospitalId, id);
         }
+
+        public Entity CreateConsultaClinica(int cantidadPacientes, TipoConsultaEnum tipoConsulta, EstadoEnum estado, string especialistaId, Guid? id = null)
+        {
+            return new ConsultaClinica(cantidadPacientes, tipoConsulta, estado, especialistaId, id);
+        }
+
     }
 }

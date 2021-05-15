@@ -7,5 +7,7 @@ namespace Clinica.AtencionPaciente.Domain.Entities
     public class Hospital : Entity
     {
         public List<Paciente> Pacientes { get; private set; }
+
+        public List<ConsultaClinica> ConsultasClinicas { get; private set; }
     }
 }
