@@ -9,10 +9,13 @@ namespace Clinica.AtencionPaciente.Domain.Entities
     {
         public bool EsFumador { get; private set; }
 
-        public Joven(bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
+        public int AnnosFumando { get; private set; }
+
+        public Joven(int annosFumando, bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
             string hospitalId, Guid? id = null) : base(nombre, edad, numeroHistoriasClinico, hospitalId, id)
         {
             this.EsFumador = esFumador;
+            this.AnnosFumando = annosFumando;
 
             if (Validations.Validador.Validar<Joven>(this, JovenValidacion.validaciones) == false)
                 throw new ArgumentException("datos incorrectos para crear el modelo ninno");

@@ -19,10 +19,10 @@ namespace Clinica.AtencionPaciente.Domain.Factories
             return new Ninno(relacionPesoEstatura, nombre, edad, numeroHistoriasClinico, hospitalId, id);
         }
 
-        public Entity CreateJoven(bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
+        public Entity CreateJoven(int annosFumando, bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
             string hospitalId, Guid? id = null)
         {
-            return new Joven(esFumador, nombre, edad, numeroHistoriasClinico, hospitalId, id);
+            return new Joven(annosFumando, esFumador, nombre, edad, numeroHistoriasClinico, hospitalId, id);
         }
 
         public Entity CreateConsultaClinica(int cantidadPacientes, TipoConsultaEnum tipoConsulta, EstadoEnum estado, string especialistaId, Guid? id = null)
