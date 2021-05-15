@@ -14,15 +14,21 @@ namespace Clinica.AtencionPaciente.Domain.Entities
 
         public Hospital Hospital { get; private set; }
 
-        public string HospitalId { get; private set; } 
+        public string HospitalId { get; private set; }
+
+        public double Prioridad { get; private set; }
+
+        public double Riesgo { get; private set; }
 
         internal protected Paciente(string nombre, int edad, string numeroHistoriasClinico, 
-            string hospitalId, Guid? id = null):base(id)
+            string hospitalId, double prioridad, double riesgo, Guid? id = null):base(id)
         {
             this.Nombre = nombre;
             this.Edad = edad;
             this.NumeroHistoriasClinico = numeroHistoriasClinico;
             this.HospitalId = hospitalId;
+            this.Prioridad = prioridad;
+            this.Riesgo = riesgo;
         }
 
         internal protected Paciente()

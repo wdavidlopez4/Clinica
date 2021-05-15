@@ -8,21 +8,21 @@ namespace Clinica.AtencionPaciente.Domain.Factories
     public class FactoryAtencionPaciente : IFactoryAtencionPaciente
     {
         public Entity CreateAnciano(bool tieneDieta, string nombre, int edad, 
-            string numeroHistoriasClinico, string hospitalId, Guid? id = null)
+            string numeroHistoriasClinico, string hospitalId, double prioridad, double riesgo, Guid? id = null)
         {
-            return new Anciano(tieneDieta, nombre, edad, numeroHistoriasClinico, hospitalId, id);
+            return new Anciano(tieneDieta, nombre, edad, numeroHistoriasClinico, hospitalId, prioridad, riesgo, id);
         }
 
         public Entity CreateNinno(int relacionPesoEstatura, string nombre, int edad, string numeroHistoriasClinico,
-            string hospitalId, Guid? id = null)
+            string hospitalId, double prioridad, double riesgo, Guid? id = null)
         {
-            return new Ninno(relacionPesoEstatura, nombre, edad, numeroHistoriasClinico, hospitalId, id);
+            return new Ninno(relacionPesoEstatura, nombre, edad, numeroHistoriasClinico, hospitalId, prioridad, riesgo, id);
         }
 
         public Entity CreateJoven(int annosFumando, bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
-            string hospitalId, Guid? id = null)
+            string hospitalId, double prioridad, double riesgo, Guid? id = null)
         {
-            return new Joven(annosFumando, esFumador, nombre, edad, numeroHistoriasClinico, hospitalId, id);
+            return new Joven(annosFumando, esFumador, nombre, edad, numeroHistoriasClinico, hospitalId, prioridad, riesgo, id);
         }
 
         public Entity CreateConsultaClinica(int cantidadPacientes, TipoConsultaEnum tipoConsulta, EstadoEnum estado, string especialistaId, Guid? id = null)

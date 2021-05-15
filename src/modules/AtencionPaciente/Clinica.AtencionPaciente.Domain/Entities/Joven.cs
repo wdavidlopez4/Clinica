@@ -12,7 +12,8 @@ namespace Clinica.AtencionPaciente.Domain.Entities
         public int AnnosFumando { get; private set; }
 
         public Joven(int annosFumando, bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
-            string hospitalId, Guid? id = null) : base(nombre, edad, numeroHistoriasClinico, hospitalId, id)
+            string hospitalId, double prioridad, double riesgo, Guid? id = null) 
+            : base(nombre, edad, numeroHistoriasClinico, hospitalId, prioridad, riesgo, id)
         {
             this.EsFumador = esFumador;
             this.AnnosFumando = annosFumando;
