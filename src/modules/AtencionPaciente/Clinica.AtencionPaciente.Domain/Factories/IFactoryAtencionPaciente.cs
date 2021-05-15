@@ -12,5 +12,8 @@ namespace Clinica.AtencionPaciente.Domain.Factories
 
         public Entity CreateNinno(int relacionPesoEstatura, string nombre, int edad, string numeroHistoriasClinico,
             string hospitalId, Guid? id = null);
+
+        public Entity CreateJoven(bool esFumador, string nombre, int edad, string numeroHistoriasClinico,
+            string hospitalId, Guid? id = null);
     }
 }
