@@ -12,5 +12,11 @@ namespace Clinica.AtencionPaciente.Domain.Factories
         {
             return new Anciano(tieneDieta, nombre, edad, numeroHistoriasClinico, hospitalId, id);
         }
+
+        public Entity CreateNinno(int relacionPesoEstatura, string nombre, int edad, string numeroHistoriasClinico,
+            string hospitalId, Guid? id = null)
+        {
+            return new Ninno(relacionPesoEstatura, nombre, edad, numeroHistoriasClinico, hospitalId, id);
+        }
     }
 }

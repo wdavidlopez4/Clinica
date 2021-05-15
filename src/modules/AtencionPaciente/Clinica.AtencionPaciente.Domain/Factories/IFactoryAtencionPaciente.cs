@@ -9,5 +9,8 @@ namespace Clinica.AtencionPaciente.Domain.Factories
     {
         public Entity CreateAnciano(bool tieneDieta, string nombre, int edad,
             string numeroHistoriasClinico, string hospitalId, Guid? id = null);
+
+        public Entity CreateNinno(int relacionPesoEstatura, string nombre, int edad, string numeroHistoriasClinico,
+            string hospitalId, Guid? id = null);
     }
 }
