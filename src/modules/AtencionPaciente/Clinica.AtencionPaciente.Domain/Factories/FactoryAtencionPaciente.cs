@@ -44,5 +44,10 @@ namespace Clinica.AtencionPaciente.Domain.Factories
         {
             return new Hospital(id);
         }
+
+        public Entity CreateEspecialista(string nombre, Guid? id = null)
+        {
+            return new Especialista(nombre, id);
+        }
     }
 }

@@ -24,5 +24,7 @@ namespace Clinica.AtencionPaciente.Domain.Factories
         public Entity CreateHospital(Paciente paciente, ConsultaClinica consultasClinica, Guid? id = null);
 
         public Entity CreateHospital(Guid? id = null);
+
+        public Entity CreateEspecialista(string nombre, Guid? id = null);
     }
 }
