@@ -18,5 +18,11 @@ namespace Clinica.AtencionPaciente.Domain.Factories
 
         public Entity CreateConsultaClinica(int cantidadPacientes, TipoConsultaEnum tipoConsulta, EstadoEnum estado,
             string especialistaId, Guid? id = null);
+
+        public Entity CreateHospital(List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null);
+
+        public Entity CreateHospital(Paciente paciente, ConsultaClinica consultasClinica, Guid? id = null);
+
+        public Entity CreateHospital(Guid? id = null);
     }
 }
