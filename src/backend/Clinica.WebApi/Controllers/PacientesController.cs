@@ -1,6 +1,7 @@
 ﻿using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreate;
+using Clinica.WebApi.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ namespace Clinica.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [TypeFilter(typeof(ExceptionManagerFilter))]
     public class PacientesController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -47,7 +49,7 @@ namespace Clinica.WebApi.Controllers
             var dto = await this.mediator.Send(youngCreate);
 
             if (dto == null)
-                return BadRequest("no se pudo registrar el ninno.");
+                return BadRequest("no se pudo registrar el joven.");
             else
                 return Ok(dto);
         }
@@ -62,7 +64,7 @@ namespace Clinica.WebApi.Controllers
             var dto = await this.mediator.Send(oldCreate);
 
             if (dto == null)
-                return BadRequest("no se pudo registrar el ninno.");
+                return BadRequest("no se pudo registrar el anciaon.");
             else
                 return Ok(dto);
         }
