@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
+namespace Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreate
 {
-    public class BoyCreateDTO
+    public class YoungCreate : IRequest<YoungCreateDTO>
     {
         public string Nombre { get; protected set; }
 
@@ -14,10 +15,8 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
 
         public string HospitalId { get; private set; }
 
-        public double Prioridad { get; private set; }
+        public bool EsFumador { get; private set; }
 
-        public double Riesgo { get; private set; }
-
-        public int RelacionPesoEstatura { get; private set; }
+        public int AnnosFumando { get; private set; }
     }
 }
