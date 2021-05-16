@@ -16,7 +16,7 @@ using System.Reflection;
 
 namespace Clinica.AtencionPaciente.Infrastructure.Startup
 {
-    public static class CoffeeClimateStartup
+    public static class ApencionPacienteStartup
     {
         public static void ConfigurationServices(IServiceCollection services, IConfiguration configuration)
         {
