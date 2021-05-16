@@ -21,5 +21,10 @@ namespace Clinica.AtencionPaciente.Domain.Entities
             if (Validations.Validador.Validar<Joven>(this, JovenValidacion.validaciones) == false)
                 throw new ArgumentException("datos incorrectos para crear el modelo ninno");
         }
+
+        private Joven():base()
+        {
+            //ef
+        }
     }
 }
