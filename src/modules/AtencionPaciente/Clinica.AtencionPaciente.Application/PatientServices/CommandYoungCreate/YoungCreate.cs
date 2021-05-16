@@ -13,8 +13,6 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreat
 
         public string NumeroHistoriasClinico { get; set; }
 
-        public string HospitalId { get; set; }
-
         public bool EsFumador { get; set; }
 
         public int AnnosFumando { get; set; }
