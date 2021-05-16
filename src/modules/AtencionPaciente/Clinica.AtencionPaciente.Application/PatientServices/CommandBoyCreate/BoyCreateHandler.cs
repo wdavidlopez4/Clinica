@@ -33,7 +33,7 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
                 throw new ArgumentNullException("la peticion para registrar el ninno es nula");
 
             //asignar hospital
-            var hospitalId = AsignarHospital(cancellationToken);
+            var hospitalId = await AsignarHospital(cancellationToken);
 
             //calcular
             var prioridad = CalcularPrioridad(request.RelacionPesoEstatura, request.Edad);
@@ -45,7 +45,7 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
                 nombre: request.Nombre,
                 edad: request.Edad,
                 numeroHistoriasClinico:request.NumeroHistoriasClinico,
-                hospitalId: hospitalId.Result,
+                hospitalId: hospitalId,
                 prioridad: prioridad,
                 riesgo: riesgo
                 );
