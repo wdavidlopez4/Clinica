@@ -11,7 +11,6 @@ using MediatR;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
-using Clinica.AtencionPaciente.Application.hospitalService.CommandHospitalCreateOne;
 using System.Reflection;
 
 namespace Clinica.AtencionPaciente.Infrastructure.Startup
@@ -45,7 +44,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Startup
             services.AddMediatR(typeof(YoungCreate).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(OldCreate).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(BoyCreate).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(HospitalCreateOne).GetTypeInfo().Assembly);
         }
     }
 }

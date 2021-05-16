@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Clinica.AtencionPaciente.Application.hospitalService.CommandHospitalCreateOne;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreate;
@@ -17,7 +16,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Mapping
             this.CreateMap<Joven, YoungCreateDTO>();
             this.CreateMap<Anciano, OldCreateDTO>();
             this.CreateMap<Ninno, BoyCreateDTO>();
-            this.CreateMap<Hospital, HospitalCreateOneDTO>();
         }
     }
 }
