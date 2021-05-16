@@ -32,8 +32,11 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreat
             if (request == null)
                 throw new ArgumentNullException("la peticion para registrar el ninno es nula");
 
-            else if (this.repository.Exists<Hospital>(x => x.Id == request.HospitalId))
-                throw new EntityNullException("aun no se a creado el hospital");
+            else if (request.Edad <= 16 || request.Edad >= 40)
+                throw new EdadException("la edad ingresada no corresponde a la de un joven");
+
+            //asignar hospital
+            var hospitalId = await AsignarHospital(cancellationToken);
 
             //calcular
             var prioridad = CalcularPrioridad(request.EsFumador, request.AnnosFumando);
@@ -46,7 +49,7 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreat
                 nombre: request.Nombre,
                 edad: request.Edad,
                 numeroHistoriasClinico: request.NumeroHistoriasClinico,
-                hospitalId: request.HospitalId,
+                hospitalId: hospitalId,
                 prioridad: prioridad,
                 riesgo: riesgo
                 );
@@ -66,6 +69,14 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreat
         private double CalcularRiesgo(int edad, double prioridad)
         {
             return (edad * prioridad) / 100;
+        }
+
+        //este metodo tambien se puede reutilizar en logica comun mas adelante
+        private async Task<string> AsignarHospital(CancellationToken cancellationToken)
+        {
+            var hospital = (Hospital)this.factory.CreateHospital();
+            hospital = await this.repository.Save<Hospital>(hospital, cancellationToken);
+            return hospital.Id;
         }
     }
 }

@@ -32,8 +32,8 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
             if (request == null)
                 throw new ArgumentNullException("la peticion para registrar el ninno es nula");
 
-            else if (this.repository.Exists<Hospital>(x => x.Id == request.HospitalId))
-                throw new EntityNullException("aun no se a creado el hospital");
+            //asignar hospital
+            var hospitalId = await AsignarHospital(cancellationToken);
 
             //calcular
             var prioridad = CalcularPrioridad(request.RelacionPesoEstatura, request.Edad);
@@ -45,7 +45,7 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
                 nombre: request.Nombre,
                 edad: request.Edad,
                 numeroHistoriasClinico:request.NumeroHistoriasClinico,
-                hospitalId: request.HospitalId,
+                hospitalId: hospitalId,
                 prioridad: prioridad,
                 riesgo: riesgo
                 );
@@ -77,6 +77,14 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
         private double CalcularRiesgo(int edad, double prioridad)
         {
             return (edad * prioridad) / 100;
+        }
+
+        //este metodo tambien se puede reutilizar en logica comun mas adelante
+        private async Task<string> AsignarHospital(CancellationToken cancellationToken)
+        {
+            var hospital = (Hospital)this.factory.CreateHospital();
+            hospital = await this.repository.Save<Hospital>(hospital, cancellationToken);
+            return hospital.Id;
         }
     }
 }
