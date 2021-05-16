@@ -25,5 +25,21 @@ namespace Clinica.AtencionPaciente.Domain.Ports
         /// <param name="expression"></param>
         /// <returns></returns>
         public bool Exists<T>(Expression<Func<T, bool>> expression) where T : Entity;
+
+        /// <summary>
+        /// obtener unicamente el primero
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public Task<T> GetFirst<T>(CancellationToken cancellationToken) where T : Entity;
+
+        /// <summary>
+        /// obtener objeto
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="expression"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<T> Get<T>(Expression<Func<T, bool>> expression, CancellationToken cancellationToken) where T : Entity;
     }
 }
