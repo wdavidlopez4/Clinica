@@ -14,7 +14,5 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate
         public string NumeroHistoriasClinico { get; set; }
 
         public int RelacionPesoEstatura { get; set; }
-
-        public string HospitalId { get; set; }
     }
 }
