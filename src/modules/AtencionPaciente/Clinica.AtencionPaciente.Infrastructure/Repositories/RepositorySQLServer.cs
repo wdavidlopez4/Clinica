@@ -14,9 +14,9 @@ namespace Clinica.AtencionPaciente.Infrastructure.Repositories
 {
     public class RepositorySQLServer : IRepository
     {
-        private readonly AtencionPacientesContex context;
+        private readonly AtencionContext context;
 
-        public RepositorySQLServer(AtencionPacientesContex context)
+        public RepositorySQLServer(AtencionContext context)
         {
             this.context = context;
         }

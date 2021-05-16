@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Clinica.AtencionPaciente.Infrastructure.EFCore
 {
-    public class AtencionPacientesContex : DbContext
+    public class AtencionContext : DbContext
     {
         public DbSet<Anciano> Ancianos  { get; set; }
 
@@ -20,7 +20,7 @@ namespace Clinica.AtencionPaciente.Infrastructure.EFCore
 
         public DbSet<Ninno> Ninnos  { get; set; }
 
-        public AtencionPacientesContex(DbContextOptions<AtencionPacientesContex> options) : base(options)
+        public AtencionContext(DbContextOptions<AtencionContext> options) : base(options)
         {
             
         }

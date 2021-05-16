@@ -30,7 +30,7 @@ namespace Clinica.AtencionPaciente.Infrastructure.Startup
         {
             // entity framework db context
             string connString = configuration.GetConnectionString("CafeConnectionString"); //obtenemos la cadena de coneccion DESDE EL ARCHIVO APPSETTINGS
-            services.AddDbContext<AtencionPacientesContex>(
+            services.AddDbContext<AtencionContext>(
                 options => options.UseSqlServer(connString));
         }
 
