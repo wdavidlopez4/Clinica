@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Clinica.AtencionPaciente.Domain.Factories
 {
-    public interface IFactoryAtencionPaciente
+    public interface IFactory
     {
         public Entity CreateAnciano(bool tieneDieta, string nombre, int edad,
             string numeroHistoriasClinico, string hospitalId, double prioridad, double riesgo, Guid? id = null);
