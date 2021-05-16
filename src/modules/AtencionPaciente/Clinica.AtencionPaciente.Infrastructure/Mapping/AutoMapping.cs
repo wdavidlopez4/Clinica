@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using Clinica.AtencionPaciente.Domain.Ports;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Clinica.AtencionPaciente.Infrastructure.Mapping
 {
-    public class AutoMapping
+    public class AutoMapping : IAutoMapping
     {
         private readonly IMapper mapper;
 
