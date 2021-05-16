@@ -32,6 +32,9 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreat
             if (request == null)
                 throw new ArgumentNullException("la peticion para registrar el ninno es nula");
 
+            else if (request.Edad <= 16 || request.Edad >= 40)
+                throw new EdadException("la edad ingresada no corresponde a la de un joven");
+
             //asignar hospital
             var hospitalId = await AsignarHospital(cancellationToken);
 
