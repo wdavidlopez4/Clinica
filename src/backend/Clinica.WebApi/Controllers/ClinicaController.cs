@@ -23,7 +23,7 @@ namespace Clinica.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("Clinica")]
+        [Route("Consulta")]
         public async Task<IActionResult> RegistrarConsultaClinica([FromBody] ClinicCreate boyCreate)
         {
             if (!ModelState.IsValid)
