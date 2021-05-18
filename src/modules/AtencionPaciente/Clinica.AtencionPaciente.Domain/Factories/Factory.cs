@@ -31,9 +31,9 @@ namespace Clinica.AtencionPaciente.Domain.Factories
             return new ConsultaClinica(cantidadPacientes, tipoConsulta, estado, especialistaId, hospitalId, id);
         }
 
-        public Entity CreateHospital(List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null)
+        public Entity CreateHospital(SalaEnum sala, List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null)
         {
-            return new Hospital(pacientes, consultasClinicas, id);
+            return new Hospital(sala, pacientes, consultasClinicas, id);
         }
 
         public Entity CreateHospital(Paciente paciente, ConsultaClinica consultasClinica, Guid? id = null)

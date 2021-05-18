@@ -14,10 +14,11 @@ namespace Clinica.AtencionPaciente.Domain.Entities
         public SalaEnum Sala { get; private set; }
 
 
-        internal Hospital(List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null) : base(id)
+        internal Hospital(SalaEnum sala, List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null) : base(id)
         {
             this.Pacientes = pacientes;
             this.ConsultasClinicas = consultasClinicas;
+            this.Sala = sala;
 
             if (Validations.Validador.Validar<Hospital>(this, Hospitalvalidacion.validaciones) == false)
                 throw new ArgumentException("datos incorrectos para crear el modelo hospital");
