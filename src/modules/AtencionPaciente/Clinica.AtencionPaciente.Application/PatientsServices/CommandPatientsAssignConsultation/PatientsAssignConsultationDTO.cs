@@ -6,10 +6,16 @@ namespace Clinica.AtencionPaciente.Application.PatientsServices.CommandPatientsA
 {
     public class PatientsAssignConsultationDTO
     {
-        public bool AsignadoUrgencias { get; set; }
+        public bool noFaltanNiññosPediatria { get; set; }
 
-        public bool AsignadoPediatria { get; set; }
+        public bool noFaltanNiññosUregncias { get; set; }
 
-        public bool AsignadoGeneral { get; set; }
+        public bool noFaltanJovensGeneral { get; set; }
+
+        public bool noFaltanJovensUrgencias { get; set; }
+
+        public bool noFaltanAncianosGeneral { get; set; }
+
+        public bool noFaltanAncianosUrgencias { get; set; }
     }
 }

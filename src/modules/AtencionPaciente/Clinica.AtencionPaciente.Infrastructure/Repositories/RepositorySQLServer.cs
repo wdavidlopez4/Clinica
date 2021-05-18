@@ -92,6 +92,39 @@ namespace Clinica.AtencionPaciente.Infrastructure.Repositories
             }
         }
 
+        public async Task<T> Update<T>(T obj, CancellationToken cancellationToken) where T : Entity
+        {
+            try
+            {
+                context.Entry(await context.Set<T>().FirstOrDefaultAsync(x => x.Id == obj.Id)).CurrentValues.SetValues(obj);
+
+                if (await context.SaveChangesAsync(cancellationToken) < 0)
+                    throw new Exception($"no se actualizo la entidad en la db: {obj.GetType()}");
+
+                return await context.Set<T>().FirstOrDefaultAsync(x => x.Id == obj.Id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"no se pudo actualizr  la entidad {e.Message}");
+            }
+        }
+
+        public async Task<List<T>> GetAll<T>(Expression<Func<T, bool>> expression, Expression<Func<T, double>> desendente,
+            CancellationToken cancellationToken) where T : Entity
+        {
+            try
+            {
+                return await context.Set<T>()
+                    .Where(expression)
+                    .OrderByDescending(desendente)
+                    .ToListAsync(cancellationToken);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception($"no se pudo recuperar la entidad {e.Message}");
+            }
+        }
 
     }
 }
