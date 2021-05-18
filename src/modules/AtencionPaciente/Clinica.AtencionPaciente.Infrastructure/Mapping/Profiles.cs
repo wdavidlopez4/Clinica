@@ -3,6 +3,7 @@ using Clinica.AtencionPaciente.Application.ClinicServices.CommandClinicCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreate;
+using Clinica.AtencionPaciente.Application.PatientServices.QueryYourngUrgentList;
 using Clinica.AtencionPaciente.Application.PatientServices.QueyBoyUrgentlist;
 using Clinica.AtencionPaciente.Domain.Entities;
 using System;
@@ -19,7 +20,8 @@ namespace Clinica.AtencionPaciente.Infrastructure.Mapping
             this.CreateMap<Anciano, OldCreateDTO>();
             this.CreateMap<Ninno, BoyCreateDTO>();
             this.CreateMap<ConsultaClinica, ClinicCreateDTO>(); 
-            this.CreateMap<Ninno, BoyUrgentlistDTO>();
+            this.CreateMap<Ninno, BoyUrgentlistDTO>(); 
+            this.CreateMap<Joven, YourngUrgentListDTO>();
         }
     }
 }

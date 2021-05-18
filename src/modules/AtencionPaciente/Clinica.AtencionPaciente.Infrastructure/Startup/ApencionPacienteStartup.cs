@@ -13,6 +13,8 @@ using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
 using System.Reflection;
 using Clinica.AtencionPaciente.Application.ClinicServices.CommandClinicCreate;
+using Clinica.AtencionPaciente.Application.PatientServices.QueyBoyUrgentlist;
+using Clinica.AtencionPaciente.Application.PatientServices.QueryYourngUrgentList;
 
 namespace Clinica.AtencionPaciente.Infrastructure.Startup
 {
@@ -45,7 +47,9 @@ namespace Clinica.AtencionPaciente.Infrastructure.Startup
             services.AddMediatR(typeof(YoungCreate).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(OldCreate).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(BoyCreate).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(ClinicCreate).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(ClinicCreate).GetTypeInfo().Assembly); 
+            services.AddMediatR(typeof(BoyUrgentlist).GetTypeInfo().Assembly); 
+            services.AddMediatR(typeof(YourngUrgentList).GetTypeInfo().Assembly);
         }
     }
 }
