@@ -10,8 +10,8 @@ namespace Clinica.AtencionPaciente.Domain.Validations
         internal static readonly Predicate<Hospital>[] validaciones =
         {
             (x) => x.Id != null && x.Id != "",
-            (x) => x.Pacientes != null && x.Pacientes.Count > 0,
-            (x) => x.ConsultasClinicas != null && x.ConsultasClinicas.Count > 0
+            (x) => x.PacientesId != null && x.PacientesId != "",
+            (x) => x.ConsultasClinicasId != null && x.ConsultasClinicasId != ""
         };
 
     }

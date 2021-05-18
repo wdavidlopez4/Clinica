@@ -41,5 +41,34 @@ namespace Clinica.AtencionPaciente.Domain.Ports
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public Task<T> Get<T>(Expression<Func<T, bool>> expression, CancellationToken cancellationToken) where T : Entity;
+
+        /// <summary>
+        /// retorna todos los objetos
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<List<T>> GetAll<T>(Expression<Func<T, bool>> expression, 
+            CancellationToken cancellationToken) where T : Entity;
+
+        /// <summary>
+        /// actualiza el objeto
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<T> Update<T>(T obj, CancellationToken cancellationToken) where T : Entity;
+
+        /// <summary>
+        /// trar una lista de objetos desendentemente segun los predicados.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="expression"></param>
+        /// <param name="desendente"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<List<T>> GetAll<T>(Expression<Func<T, bool>> expression, Expression<Func<T, double>> desendente,
+            CancellationToken cancellationToken) where T : Entity;
     }
 }

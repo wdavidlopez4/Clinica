@@ -7,32 +7,31 @@ namespace Clinica.AtencionPaciente.Domain.Entities
 {
     public class Hospital : Entity
     {
-        public List<Paciente> Pacientes { get; private set; }
+        public Paciente Pacientes { get; private set; }
 
-        public List<ConsultaClinica> ConsultasClinicas { get; private set; }
+        public ConsultaClinica ConsultasClinicas { get; private set; }
 
+        public string PacientesId { get; private set; }
 
-        internal Hospital(List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null) : base(id)
+        public string ConsultasClinicasId { get; private set; }
+
+        public SalaEnum Sala { get; private set; }
+
+        internal Hospital(string pacientesId, string consultasClinicasId, SalaEnum sala, Guid? id = null):base(id)
         {
-            this.Pacientes = pacientes;
-            this.ConsultasClinicas = consultasClinicas;
+            this.ConsultasClinicasId = consultasClinicasId;
+            this.PacientesId = pacientesId;
+            this.Sala = sala;
 
             if (Validations.Validador.Validar<Hospital>(this, Hospitalvalidacion.validaciones) == false)
-                throw new ArgumentException("datos incorrectos para crear el modelo hospital");
+                throw new ArgumentException("los datos para crear el modelo de consulta clinica son invalidos");
         }
 
-        internal Hospital(Paciente paciente, ConsultaClinica consultasClinica, Guid? id = null) : base(id)
+        internal Hospital(SalaEnum sala, string pacientesId = null, string consultasClinicasId = null,  Guid? id = null) : base(id)
         {
-            this.Pacientes.Add(paciente);
-            this.ConsultasClinicas.Add(consultasClinica);
-
-            if (Validations.Validador.Validar<Hospital>(this, Hospitalvalidacion.validaciones) == false)
-                throw new ArgumentException("datos incorrectos para crear el modelo hospital");
-        }
-
-        internal Hospital(Guid? id = null) : base(id)
-        {
-            //cuando se cree por primera ves un hospital
+            this.ConsultasClinicasId = consultasClinicasId;
+            this.PacientesId = pacientesId;
+            this.Sala = sala;
         }
 
         private Hospital()

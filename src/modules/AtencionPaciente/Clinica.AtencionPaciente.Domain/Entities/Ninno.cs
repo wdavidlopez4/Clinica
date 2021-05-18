@@ -10,8 +10,8 @@ namespace Clinica.AtencionPaciente.Domain.Entities
         public int RelacionPesoEstatura { get; private set; }
 
         internal Ninno(int relacionPesoEstatura, string nombre, int edad, string numeroHistoriasClinico, 
-            string hospitalId, double prioridad, double riesgo, Guid? id = null)
-            : base(nombre, edad, numeroHistoriasClinico, hospitalId, prioridad, riesgo, id)
+            double prioridad, double riesgo, List<Hospital> hospital = null, Guid ? id = null)
+            : base(nombre, edad, numeroHistoriasClinico, prioridad, riesgo, hospital, id)
         {
             this.RelacionPesoEstatura = relacionPesoEstatura;
 
