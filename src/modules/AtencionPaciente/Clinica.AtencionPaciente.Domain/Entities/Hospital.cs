@@ -11,6 +11,8 @@ namespace Clinica.AtencionPaciente.Domain.Entities
 
         public List<ConsultaClinica> ConsultasClinicas { get; private set; }
 
+        public SalaEnum Sala { get; private set; }
+
 
         internal Hospital(List<Paciente> pacientes, List<ConsultaClinica> consultasClinicas, Guid? id = null) : base(id)
         {
@@ -30,8 +32,9 @@ namespace Clinica.AtencionPaciente.Domain.Entities
                 throw new ArgumentException("datos incorrectos para crear el modelo hospital");
         }
 
-        internal Hospital(Guid? id = null) : base(id)
+        internal Hospital(SalaEnum sala, Guid? id = null) : base(id)
         {
+            this.Sala = sala;
             //cuando se cree por primera ves un hospital
         }
 

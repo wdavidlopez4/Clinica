@@ -35,9 +35,6 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate
             else if (request.Edad <= 40)
                 throw new EdadException("la edad ingresada no corresponde a la de un anciano");
 
-            //asignar hospital
-            var hospitalId = await AsignarHospital(cancellationToken);
-
             //calcular
             var prioridad = CalcularPrioridad(request.TieneDieta, request.Edad);
             var riesgo = CalcularRiesgo(request.Edad, prioridad);
@@ -48,7 +45,6 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate
                 nombre: request.Nombre,
                 edad: request.Edad,
                 numeroHistoriasClinico: request.NumeroHistoriasClinico,
-                hospitalId: hospitalId,
                 prioridad: prioridad,
                 riesgo: riesgo
                 );
@@ -68,12 +64,5 @@ namespace Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate
             return (edad * prioridad) / 100 + 5.3;
         }
 
-        //este metodo tambien se puede reutilizar en logica comun mas adelante
-        private async Task<string> AsignarHospital(CancellationToken cancellationToken)
-        {
-            var hospital = (Hospital)this.factory.CreateHospital();
-            hospital = await this.repository.Save<Hospital>(hospital, cancellationToken);
-            return hospital.Id;
-        }
     }
 }

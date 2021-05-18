@@ -47,6 +47,20 @@ namespace Clinica.AtencionPaciente.Infrastructure.Repositories
             }
         }
 
+        public async Task<List<T>> GetAll<T>(Expression<Func<T, bool>> expression, 
+            CancellationToken cancellationToken) where T : Entity
+        {
+            try
+            {
+                return await context.Set<T>().Where(expression).ToListAsync(cancellationToken);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception($"no se pudo recuperar la entidad {e.Message}");
+            }
+        }
+
         public async Task<T> GetFirst<T>(CancellationToken cancellationToken) where T : Entity
         {
             try
@@ -77,5 +91,7 @@ namespace Clinica.AtencionPaciente.Infrastructure.Repositories
                 throw new Exception($"{e.Message}");
             }
         }
+
+
     }
 }

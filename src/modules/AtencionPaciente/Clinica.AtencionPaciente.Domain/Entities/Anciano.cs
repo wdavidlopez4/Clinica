@@ -9,9 +9,8 @@ namespace Clinica.AtencionPaciente.Domain.Entities
     {
         public bool TieneDieta { get; private set; }
 
-        internal Anciano(bool tieneDieta, string nombre, int edad, string numeroHistoriasClinico, 
-            string hospitalId, double prioridad, double riesgo, Guid? id = null) 
-            :base(nombre, edad, numeroHistoriasClinico, hospitalId, prioridad, riesgo, id)
+        internal Anciano(bool tieneDieta, string nombre, int edad, string numeroHistoriasClinico, double prioridad, double riesgo, string hospitalId = null, Guid ? id = null) 
+            :base(nombre, edad, numeroHistoriasClinico, prioridad, riesgo, hospitalId, id)
         {
             this.TieneDieta = tieneDieta;
 

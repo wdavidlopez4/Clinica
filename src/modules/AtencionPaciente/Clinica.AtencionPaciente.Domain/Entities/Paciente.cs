@@ -21,7 +21,7 @@ namespace Clinica.AtencionPaciente.Domain.Entities
         public double Riesgo { get; private set; }
 
         internal protected Paciente(string nombre, int edad, string numeroHistoriasClinico, 
-            string hospitalId, double prioridad, double riesgo, Guid? id = null):base(id)
+            double prioridad, double riesgo, string hospitalId = null, Guid? id = null):base(id)
         {
             this.Nombre = nombre;
             this.Edad = edad;

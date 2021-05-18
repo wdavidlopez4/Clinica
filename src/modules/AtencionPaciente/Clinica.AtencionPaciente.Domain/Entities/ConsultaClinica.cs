@@ -17,13 +17,18 @@ namespace Clinica.AtencionPaciente.Domain.Entities
 
         public string EspecialistaId { get; private set; }
 
+        public Hospital Hospital { get; private set; }
+
+        public string HospitalId { get; private set; }
+
         internal ConsultaClinica(int cantidadPacientes, TipoConsultaEnum tipoConsulta, EstadoEnum estado,
-            string especialistaId, Guid? id = null) : base(id)
+            string especialistaId, string hospitalId = null, Guid? id = null) : base(id)
         {
             this.CantidadPacientes = cantidadPacientes;
             this.TipoConsulta = tipoConsulta;
             this.Estado = estado;
             this.EspecialistaId = especialistaId;
+            this.HospitalId = hospitalId;
 
             if (Validations.Validador.Validar<ConsultaClinica>(this, ConsultaClinicaValidacion.validaciones) == false)
                 throw new ArgumentException("los datos para crear el modelo de consulta clinica son invalidos");

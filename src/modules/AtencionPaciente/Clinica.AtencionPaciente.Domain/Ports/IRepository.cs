@@ -41,5 +41,14 @@ namespace Clinica.AtencionPaciente.Domain.Ports
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public Task<T> Get<T>(Expression<Func<T, bool>> expression, CancellationToken cancellationToken) where T : Entity;
+
+        /// <summary>
+        /// retorna todos los objetos
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<List<T>> GetAll<T>(Expression<Func<T, bool>> expression, 
+            CancellationToken cancellationToken) where T : Entity;
     }
 }
