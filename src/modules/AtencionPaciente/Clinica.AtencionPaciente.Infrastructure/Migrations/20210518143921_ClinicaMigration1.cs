@@ -2,7 +2,7 @@
 
 namespace Clinica.AtencionPaciente.Infrastructure.Migrations
 {
-    public partial class AtencionMigration1 : Migration
+    public partial class ClinicaMigration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,45 +19,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hospitales",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Hospitales", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ConsultasClinicas",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    CantidadPacientes = table.Column<int>(nullable: false),
-                    TipoConsulta = table.Column<int>(nullable: false),
-                    Estado = table.Column<int>(nullable: false),
-                    EspecialistaId = table.Column<string>(nullable: true),
-                    HospitalId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ConsultasClinicas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ConsultasClinicas_Especialistas_EspecialistaId",
-                        column: x => x.EspecialistaId,
-                        principalTable: "Especialistas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ConsultasClinicas_Hospitales_HospitalId",
-                        column: x => x.HospitalId,
-                        principalTable: "Hospitales",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Paciente",
                 columns: table => new
                 {
@@ -65,7 +26,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                     Nombre = table.Column<string>(nullable: true),
                     Edad = table.Column<int>(nullable: false),
                     NumeroHistoriasClinico = table.Column<string>(nullable: true),
-                    HospitalId = table.Column<string>(nullable: true),
                     Prioridad = table.Column<double>(nullable: false),
                     Riesgo = table.Column<double>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
@@ -77,10 +37,51 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Paciente", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ConsultasClinicas",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CantidadPacientes = table.Column<int>(nullable: false),
+                    TipoConsulta = table.Column<int>(nullable: false),
+                    Estado = table.Column<int>(nullable: false),
+                    EspecialistaId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConsultasClinicas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Paciente_Hospitales_HospitalId",
-                        column: x => x.HospitalId,
-                        principalTable: "Hospitales",
+                        name: "FK_ConsultasClinicas_Especialistas_EspecialistaId",
+                        column: x => x.EspecialistaId,
+                        principalTable: "Especialistas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hospitales",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    PacientesId = table.Column<string>(nullable: true),
+                    ConsultasClinicasId = table.Column<string>(nullable: true),
+                    Sala = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hospitales", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Hospitales_ConsultasClinicas_ConsultasClinicasId",
+                        column: x => x.ConsultasClinicasId,
+                        principalTable: "ConsultasClinicas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Hospitales_Paciente_PacientesId",
+                        column: x => x.PacientesId,
+                        principalTable: "Paciente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -93,18 +94,21 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                 filter: "[EspecialistaId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ConsultasClinicas_HospitalId",
-                table: "ConsultasClinicas",
-                column: "HospitalId");
+                name: "IX_Hospitales_ConsultasClinicasId",
+                table: "Hospitales",
+                column: "ConsultasClinicasId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Paciente_HospitalId",
-                table: "Paciente",
-                column: "HospitalId");
+                name: "IX_Hospitales_PacientesId",
+                table: "Hospitales",
+                column: "PacientesId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Hospitales");
+
             migrationBuilder.DropTable(
                 name: "ConsultasClinicas");
 
@@ -113,9 +117,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Especialistas");
-
-            migrationBuilder.DropTable(
-                name: "Hospitales");
         }
     }
 }

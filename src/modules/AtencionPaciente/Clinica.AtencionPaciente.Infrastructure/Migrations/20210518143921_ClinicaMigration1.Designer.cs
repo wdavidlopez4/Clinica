@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinica.AtencionPaciente.Infrastructure.Migrations
 {
     [DbContext(typeof(AtencionContext))]
-    [Migration("20210518032026_AtencionMigration2")]
-    partial class AtencionMigration2
+    [Migration("20210518143921_ClinicaMigration1")]
+    partial class ClinicaMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,9 +34,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
-                    b.Property<string>("HospitalId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("TipoConsulta")
                         .HasColumnType("int");
 
@@ -45,8 +42,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                     b.HasIndex("EspecialistaId")
                         .IsUnique()
                         .HasFilter("[EspecialistaId] IS NOT NULL");
-
-                    b.HasIndex("HospitalId");
 
                     b.ToTable("ConsultasClinicas");
                 });
@@ -69,10 +64,20 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ConsultasClinicasId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PacientesId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("Sala")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ConsultasClinicasId");
+
+                    b.HasIndex("PacientesId");
 
                     b.ToTable("Hospitales");
                 });
@@ -89,9 +94,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                     b.Property<int>("Edad")
                         .HasColumnType("int");
 
-                    b.Property<string>("HospitalId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
@@ -105,8 +107,6 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("HospitalId");
 
                     b.ToTable("Paciente");
 
@@ -151,17 +151,17 @@ namespace Clinica.AtencionPaciente.Infrastructure.Migrations
                     b.HasOne("Clinica.AtencionPaciente.Domain.Entities.Especialista", "Especialista")
                         .WithOne("ConsultaClinica")
                         .HasForeignKey("Clinica.AtencionPaciente.Domain.Entities.ConsultaClinica", "EspecialistaId");
-
-                    b.HasOne("Clinica.AtencionPaciente.Domain.Entities.Hospital", "Hospital")
-                        .WithMany("ConsultasClinicas")
-                        .HasForeignKey("HospitalId");
                 });
 
-            modelBuilder.Entity("Clinica.AtencionPaciente.Domain.Entities.Paciente", b =>
+            modelBuilder.Entity("Clinica.AtencionPaciente.Domain.Entities.Hospital", b =>
                 {
-                    b.HasOne("Clinica.AtencionPaciente.Domain.Entities.Hospital", "Hospital")
-                        .WithMany("Pacientes")
-                        .HasForeignKey("HospitalId");
+                    b.HasOne("Clinica.AtencionPaciente.Domain.Entities.ConsultaClinica", "ConsultasClinicas")
+                        .WithMany("hospital")
+                        .HasForeignKey("ConsultasClinicasId");
+
+                    b.HasOne("Clinica.AtencionPaciente.Domain.Entities.Paciente", "Pacientes")
+                        .WithMany("Hospital")
+                        .HasForeignKey("PacientesId");
                 });
 #pragma warning restore 612, 618
         }
