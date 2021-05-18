@@ -98,32 +98,32 @@ namespace Clinica.AtencionPaciente.Application.PatientsServices.CommandPatientsT
         {
             //clasificar pacientes segun prioridad y que no se les alla asignado una consulta
             this.ninnosPediatria = await this.repository.GetAll<Ninno>(
-                x => x.Prioridad <= 4 && x.Hospital == null,
+                x => x.Prioridad <= 4 && x.Hospital.Count == 0,
                 x => x.Prioridad,
                 cancellationToken);
 
             this.ninnosUrgencias = await this.repository.GetAll<Ninno>(
-                x => x.Prioridad > 4 && x.Hospital == null,
+                x => x.Prioridad > 4 && x.Hospital.Count == 0,
                 x => x.Prioridad,
                 cancellationToken);
 
             this.jovenesGeneral = await this.repository.GetAll<Joven>(
-                x => x.Prioridad < 4 && x.Hospital == null,
+                x => x.Prioridad < 4 && x.Hospital.Count == 0,
                 x => x.Prioridad,
                 cancellationToken);
 
             this.jovenesUrgencias = await this.repository.GetAll<Joven>(
-                x => x.Prioridad > 4 && x.Hospital == null,
+                x => x.Prioridad > 4 && x.Hospital.Count == 0,
                 x => x.Prioridad,
                 cancellationToken);
 
             this.ancianosGeneral = await this.repository.GetAll<Anciano>(
-                x => x.Prioridad < 4 && x.Hospital == null,
+                x => x.Prioridad < 4 && x.Hospital.Count == 0,
                 x => x.Prioridad,
                 cancellationToken);
 
             this.ancianosUrgencias = await this.repository.GetAll<Anciano>(
-                x => x.Prioridad > 4 && x.Hospital == null,
+                x => x.Prioridad > 4 && x.Hospital.Count == 0,
                 x => x.Prioridad,
                 cancellationToken);
         }
@@ -131,7 +131,7 @@ namespace Clinica.AtencionPaciente.Application.PatientsServices.CommandPatientsT
         private async Task<bool> AsignarPacientesAConsulta<T>(List<ConsultaClinica> consultasClinicas, 
             List<T> pacientes, CancellationToken cancellationToken) where T : Paciente
         {
-            if (consultasClinicas != null)
+            if (consultasClinicas.Count > 0)
             {
                 //creamos un hospital en sala pendientes y con asignacion de consultas y pacientes
                 var hospital = (Hospital)this.factory.CreateHospital(SalaEnum.pendiente);
