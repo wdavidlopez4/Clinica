@@ -13,6 +13,7 @@ using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
 using System.Reflection;
 using Clinica.AtencionPaciente.Application.ClinicServices.CommandClinicCreate;
+using Clinica.AtencionPaciente.Application.PatientsServices.CommandPatientsAssignConsultation;
 
 namespace Clinica.AtencionPaciente.Infrastructure.Startup
 {
@@ -46,6 +47,7 @@ namespace Clinica.AtencionPaciente.Infrastructure.Startup
             services.AddMediatR(typeof(OldCreate).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(BoyCreate).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(ClinicCreate).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(PatientsAssignConsultation).GetTypeInfo().Assembly);
         }
     }
 }
