@@ -3,6 +3,7 @@ using Clinica.AtencionPaciente.Application.ClinicServices.CommandClinicCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandBoyCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandOldCreate;
 using Clinica.AtencionPaciente.Application.PatientServices.CommandYoungCreate;
+using Clinica.AtencionPaciente.Application.PatientServices.QueryOlder;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryOldUrgentList;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryYoungUrgentSmokerslist;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryYourngUrgentList;
@@ -25,7 +26,8 @@ namespace Clinica.AtencionPaciente.Infrastructure.Mapping
             this.CreateMap<Ninno, BoyUrgentlistDTO>(); 
             this.CreateMap<Joven, YourngUrgentListDTO>(); 
             this.CreateMap<Anciano, OldUrgentListDTO>();
-            this.CreateMap<Joven, YoungUrgentSmokerslistDTO>();
+            this.CreateMap<Joven, YoungUrgentSmokerslistDTO>(); 
+            this.CreateMap<Anciano, OlderDTO>();
         }
     }
 }

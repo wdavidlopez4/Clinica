@@ -17,6 +17,7 @@ using Clinica.AtencionPaciente.Application.PatientServices.QueyBoyUrgentlist;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryYourngUrgentList;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryOldUrgentList;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryYoungUrgentSmokerslist;
+using Clinica.AtencionPaciente.Application.PatientServices.QueryOlder;
 
 namespace Clinica.AtencionPaciente.Infrastructure.Startup
 {
@@ -53,7 +54,8 @@ namespace Clinica.AtencionPaciente.Infrastructure.Startup
             services.AddMediatR(typeof(BoyUrgentlist).GetTypeInfo().Assembly); 
             services.AddMediatR(typeof(YourngUrgentList).GetTypeInfo().Assembly); 
             services.AddMediatR(typeof(OldUrgentList).GetTypeInfo().Assembly); 
-            services.AddMediatR(typeof(YoungUrgentSmokerslist).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(YoungUrgentSmokerslist).GetTypeInfo().Assembly); 
+            services.AddMediatR(typeof(Older).GetTypeInfo().Assembly);
         }
     }
 }

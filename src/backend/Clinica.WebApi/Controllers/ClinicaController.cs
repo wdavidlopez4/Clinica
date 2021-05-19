@@ -1,4 +1,5 @@
 ﻿using Clinica.AtencionPaciente.Application.ClinicServices.CommandClinicCreate;
+using Clinica.AtencionPaciente.Application.PatientServices.QueryOlder;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryOldUrgentList;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryYoungUrgentSmokerslist;
 using Clinica.AtencionPaciente.Application.PatientServices.QueryYourngUrgentList;
@@ -94,6 +95,21 @@ namespace Clinica.WebApi.Controllers
                 return BadRequest("el modelo no es valido, ingrese correctamente los datos.");
 
             var dto = await this.mediator.Send(youngUrgentSmokerslist);
+
+            if (dto == null)
+                return BadRequest("no se pudo registrar el joven.");
+            else
+                return Ok(dto);
+        }
+
+        [HttpPost]
+        [Route("Mayores")]
+        public async Task<IActionResult> ObtenerMayores([FromBody] Older older)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("el modelo no es valido, ingrese correctamente los datos.");
+
+            var dto = await this.mediator.Send(older);
 
             if (dto == null)
                 return BadRequest("no se pudo registrar el joven.");
