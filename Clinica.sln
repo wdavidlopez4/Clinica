@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{5CBC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AtencionPaciente", "AtencionPaciente", "{43CC3E83-EA26-4955-932F-F751BBB528A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.AtencionPaciente.Domain", "src\modules\AtencionPaciente\Clinica.AtencionPaciente.Domain\Clinica.AtencionPaciente.Domain.csproj", "{18BE9872-39A2-4F98-956D-332A77C3080B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinica.AtencionPaciente.Domain", "src\modules\AtencionPaciente\Clinica.AtencionPaciente.Domain\Clinica.AtencionPaciente.Domain.csproj", "{18BE9872-39A2-4F98-956D-332A77C3080B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.AtencionPaciente.Application", "src\modules\AtencionPaciente\Clinica.AtencionPaciente.Application\Clinica.AtencionPaciente.Application.csproj", "{9BBBB846-BF2E-4D7E-A31E-B2463F1C659A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinica.AtencionPaciente.Application", "src\modules\AtencionPaciente\Clinica.AtencionPaciente.Application\Clinica.AtencionPaciente.Application.csproj", "{9BBBB846-BF2E-4D7E-A31E-B2463F1C659A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.AtencionPaciente.Infrastructure", "src\modules\AtencionPaciente\Clinica.AtencionPaciente.Infrastructure\Clinica.AtencionPaciente.Infrastructure.csproj", "{43F081DB-CC47-4E45-A206-58FE0B89D18C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinica.AtencionPaciente.Infrastructure", "src\modules\AtencionPaciente\Clinica.AtencionPaciente.Infrastructure\Clinica.AtencionPaciente.Infrastructure.csproj", "{43F081DB-CC47-4E45-A206-58FE0B89D18C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.WebApi", "src\backend\Clinica.WebApi\Clinica.WebApi.csproj", "{012DEC9B-B715-4B27-BF0F-F492EBD2285A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinica.WebApi", "src\backend\Clinica.WebApi\Clinica.WebApi.csproj", "{012DEC9B-B715-4B27-BF0F-F492EBD2285A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
